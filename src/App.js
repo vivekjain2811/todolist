@@ -1,18 +1,17 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Label from "./Components/Label";
 import { useState } from "react";
-
+import List from "./Components/List";
+//basic structure of the todo list app in react i have to make it proper by usig my video knowledge and
+//other things also.
 function App() {
-  const [state, setstate] = useState("");
-  const [set, value] = useState("");
-  const [btnclclk, setbtnclk] = useState(false);
+  const [array, setarray] = useState([]);
+  const [value, setvalue] = useState("");
   function changeHandler(event) {
-    setstate(event.target.value);
+    setvalue(event.target.value);
   }
   function clickHandler() {
-    value(state);
-    setbtnclk(true);
+    setarray([...array, value]);
   }
   return (
     <div>
@@ -37,10 +36,8 @@ function App() {
           </button>
         </div>
       </div>
-
-      {btnclclk ? <Label set={set}></Label> : <></>}
+      <List myarray={array}></List>
     </div>
   );
 }
-
 export default App;
